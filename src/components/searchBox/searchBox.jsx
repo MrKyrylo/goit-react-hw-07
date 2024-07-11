@@ -5,17 +5,17 @@ import { selectNameFilter } from "../../redux/filtersSlice";
 import { changeFilter } from "../../redux/filtersSlice";
 
 export default function SearchBox() {
-  const filter = useSelector((state) => selectNameFilter(state));
-
+  const nameFilter = useSelector((state) => selectNameFilter(state));
   const dispatch = useDispatch();
 
   function onSearch(event) {
     dispatch(changeFilter(String(event.target.value)));
   }
+
   return (
     <div className={css.findBox}>
       <label>Find contacts by name</label>
-      <input type="text" onChange={onSearch} />
+      <input type="text" onChange={onSearch} value={nameFilter} />
     </div>
   );
 }
